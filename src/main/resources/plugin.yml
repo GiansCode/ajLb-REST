@@ -1,0 +1,13 @@
+name: ajLb-REST
+main: us.ajg0702.leaderboards.rest.LbRestPlugin
+version: "@VERSION@"
+depend:
+  - ajLeaderboards
+description: An addon for ajLeaderboards that provides a REST api to access leaderboards from
+author: ajgeiss0702
+api-version: 1.13
+commands:
+  ajleaderboardsrest:
+    aliases: [ajlbr]
+    description: Commands for ajLb-REST
+    permission: ajleaderboardsrest.reload

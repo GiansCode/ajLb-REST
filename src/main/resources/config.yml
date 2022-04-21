@@ -1,0 +1,10 @@
+# Dont touch this
+config-version: 0
+
+# The HTTP server port
+# This port must not be used by anything else
+http-port: 8296
+
+# Only allow these boards to be fetched via the REST api.
+# If this list is an empty list ([]) then all boards will be allowed
+only-allow: []

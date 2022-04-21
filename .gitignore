@@ -1,0 +1,7 @@
+target
+/bin/
+/.idea/
+/.gradle/
+/build/
+build
+.DS_Store
