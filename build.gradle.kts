@@ -31,7 +31,7 @@ dependencies {
     compileOnly("us.ajg0702.commands.platforms.bukkit:bukkit:1.0.0-pre14")
     compileOnly("us.ajg0702.commands.api:api:1.0.0-pre14")
 
-    compileOnly("us.ajg0702:ajLeaderboards:2.4.1")
+    compileOnly("us.ajg0702:ajLeaderboards:2.4.3")
 }
 
 tasks.shadowJar {
