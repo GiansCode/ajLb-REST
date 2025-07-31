@@ -14,16 +14,17 @@ import java.util.logging.Level;
 
 public class LbRestPlugin extends JavaPlugin {
 
+    private final SkinCache skinCache = new SkinCache();
+    private final FloodgateHelper floodgateHelper = new ActualFloodgateHelper();
     private WebServer webServer;
     private Config config;
     private LeaderboardPlugin ajlb;
-
 
     @Override
     public void onEnable() {
 
         Plugin leaderboardPlugin = Bukkit.getPluginManager().getPlugin("ajLeaderboards");
-        if(leaderboardPlugin == null || !leaderboardPlugin.isEnabled() || !(leaderboardPlugin instanceof LeaderboardPlugin)) {
+        if (leaderboardPlugin == null || !leaderboardPlugin.isEnabled() || !(leaderboardPlugin instanceof LeaderboardPlugin)) {
             getLogger().severe("ajLeaderboards is unavailable. Disabling!");
             Bukkit.getPluginManager().disablePlugin(this);
             return;
@@ -47,15 +48,15 @@ public class LbRestPlugin extends JavaPlugin {
 
         webServer = new WebServer(this);
 
-        getLogger().info("ajLb-REST v"+getDescription().getVersion()+" enabled!");
+        getLogger().info("ajLb-REST v" + getDescription().getVersion() + " enabled!");
     }
 
     @Override
     public void onDisable() {
-        if(config != null) {
+        if (config != null) {
             webServer.shutdown();
         }
-        getLogger().info("ajLb-REST v"+getDescription().getVersion()+" disabled");
+        getLogger().info("ajLb-REST v" + getDescription().getVersion() + " disabled");
     }
 
     public Config getAConfig() {
@@ -68,5 +69,13 @@ public class LbRestPlugin extends JavaPlugin {
 
     public LeaderboardPlugin getAjlb() {
         return ajlb;
+    }
+
+    public SkinCache getSkinCache() {
+        return skinCache;
+    }
+
+    public FloodgateHelper getFloodgateHelper() {
+        return floodgateHelper;
     }
 }
