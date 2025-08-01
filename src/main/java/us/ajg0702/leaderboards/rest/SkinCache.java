@@ -16,18 +16,20 @@ public class SkinCache {
     }
 
     private final SkinApi skinApi = new SkinApi();
-    private final LoadingCache<Long, ConvertedSkin> skinCache = CacheBuilder.newBuilder().expireAfterWrite(5, java.util.concurrent.TimeUnit.MINUTES).build(new CacheLoader<>() {
-        @Override
-        public @NotNull ConvertedSkin load(@NotNull Long key) throws Exception {
-            try {
-                ConvertedSkin.openapiFields.add("last_update"); // this is so silly, but fixes broken OpenAPI spec
-                return skinApi.globalApiWebApiSkinControllerGetSkin(key.toString());
-            } catch (IllegalArgumentException validationException) {
-                // the openapi spec is broken so validation fails sometimes lol
-                throw new IllegalArgumentException("Validation Failed", validationException);
-            }
-        }
-    });
+    private final LoadingCache<Long, ConvertedSkin> skinCache = CacheBuilder.newBuilder()
+            .expireAfterWrite(5, java.util.concurrent.TimeUnit.MINUTES)
+            .build(new CacheLoader<Long, ConvertedSkin>() {
+                @Override
+                public @NotNull ConvertedSkin load(@NotNull Long key) throws Exception {
+                    try {
+                        ConvertedSkin.openapiFields.add("last_update"); // this is so silly, but fixes broken OpenAPI spec
+                        return skinApi.globalApiWebApiSkinControllerGetSkin(key.toString());
+                    } catch (IllegalArgumentException validationException) {
+                        // the openapi spec is broken so validation fails sometimes lol
+                        throw new IllegalArgumentException("Validation Failed", validationException);
+                    }
+                }
+            });
 
     public @Nullable ConvertedSkin getSkin(Long skinId) {
         try {

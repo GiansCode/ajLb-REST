@@ -19,6 +19,11 @@ repositories {
 	maven { url = uri("https://repo.opencollab.dev/main/") }
 }
 
+java {
+	sourceCompatibility = JavaVersion.VERSION_1_8
+	targetCompatibility= JavaVersion.VERSION_1_8
+}
+
 dependencies {
 	testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.2")
 	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
@@ -41,8 +46,7 @@ dependencies {
 	compileOnly("us.ajg0702.commands.api:api:1.0.0-pre14")
 
 	compileOnly("us.ajg0702:ajLeaderboards:2.10.1")
-
-	compileOnly("org.geysermc.geyser:api:2.8.2-SNAPSHOT")
+	
 	compileOnly("org.geysermc.floodgate:api:2.2.4-SNAPSHOT")
 }
 
